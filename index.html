@@ -2,7 +2,8 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap">
+  <!-- inside <head> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYJUI33DNicBBfet_DMfrbvvu2sBlDDSQ"></script>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -16,32 +17,47 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/">
+  <base href="/sushi/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
 
   <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="terza_spiaggia_web">
+  <meta name="apple-mobile-web-app-title" content="terza_spiaggia">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>sushi</title>
+  <title>terza_spiaggia_web</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = ""1799070720" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
 </head>
 
 <body>
   <script>
-    // Force HTML renderer for broader Safari compatibility on this Flutter version.
-    window._flutterWebRenderer = "html";
-    window.flutterWebRenderer = "html"; // older bootstraps read this key
+    window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine({
+            hostElement: document.querySelector("#flutter_host"),
+          }).then(function (appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
   </script>
-  <script src="flutter_bootstrap.js" async></script>
 </body>
 
 </html>
